@@ -10,8 +10,9 @@ const passport = require('passport');
 
 
 const { PORT, DATABASE_URL, MONGODB_URI} = require('./config');
-const { router: usersRouter } = require('./users');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const { router: usersRouter } = require('./routes/user-router');
+const { router: authRouter } = require('./routes/auth-router');
+const { localStrategy, jwtStrategy } = require('./auth/strategies');
 
 const app = express();
 
@@ -45,12 +46,10 @@ app.use('/api/auth/', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
-
 // Initial server test
 app.get('/', (req, res) => {
   console.log(res.json({message:'Hello Express!'}));
 });
-
 
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', jwtAuth, (req, res) => {
