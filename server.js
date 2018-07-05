@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 
+const collectionRouter = require('./routes/collection-router');
 const { PORT, DATABASE_URL, MONGODB_URI} = require('./config');
 const { router: usersRouter } = require('./routes/user-router');
 const { router: authRouter } = require('./routes/auth-router');
@@ -42,6 +43,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
+app.use('/api/collection/', collectionRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
