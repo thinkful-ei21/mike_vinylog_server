@@ -1,7 +1,6 @@
 'use strict';
 
 const express = require('express');
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Collection = require('../models/collection-model');
@@ -32,3 +31,5 @@ router.post('/', (req, res, next) => {
       next(err);
     });
 });
+
+module.exports = router;

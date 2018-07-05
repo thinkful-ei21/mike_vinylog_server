@@ -8,11 +8,11 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
+const { PORT, DATABASE_URL, MONGODB_URI} = require('./config');
 
 const collectionRouter = require('./routes/collection-router');
-const { PORT, DATABASE_URL, MONGODB_URI} = require('./config');
-const { router: usersRouter } = require('./routes/user-router');
-const { router: authRouter } = require('./routes/auth-router');
+const usersRouter   = require('./routes/user-router');
+const authRouter  = require('./routes/auth-router');
 const { localStrategy, jwtStrategy } = require('./auth/strategies');
 
 const app = express();
