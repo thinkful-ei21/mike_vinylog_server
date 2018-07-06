@@ -9,7 +9,6 @@ const collectionSchema = new mongoose.Schema({
   year: String
 });
 
-
 collectionSchema.set('toObject', {
   virtuals: true,     // include built-in virtual `id`
   versionKey: false,  // remove `__v` version key

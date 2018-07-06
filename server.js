@@ -1,6 +1,5 @@
 'use strict';
 
-
 require('dotenv').config();
 
 const express = require('express');
@@ -35,8 +34,6 @@ app.use(function (req, res, next) {
   }
   next();
 });
-
-// app.use(express.static('public'));
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
