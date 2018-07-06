@@ -6,7 +6,8 @@ const collectionSchema = new mongoose.Schema({
   title: { type: String, required: true },
   thumb: String,
   genre: String,
-  year: String
+  year: String,
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
 collectionSchema.set('toObject', {
