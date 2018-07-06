@@ -17,8 +17,6 @@ router.get('/', (req, res, next) => {
 
   let filter = { userId };
 
-  console.log(req.user, filter);
-
   Collection.find(filter)
     .then(results => {
       res.json(results);
