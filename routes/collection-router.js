@@ -11,7 +11,7 @@ const router = express.Router();
 // Protect endpoints using JWT Strategy
 router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
 
-/* ========== GET/READ ALL ITEMS ========== */
+/* ========== GET/READ ALL ALBUMS ========== */
 router.get('/', (req, res, next) => {
   const userId  = req.user._id
 
@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-/* ========== GET/READ A SINGLE ITEM ========== */
+/* ========== GET/READ A SINGLE ALBUM ========== */
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const { userId } = req.body;
@@ -51,7 +51,7 @@ router.get('/:id', (req, res, next) => {
 });
 
 
-/* ========== POST/CREATE AN ITEM ========== */
+/* ========== POST/SAVE AN ALBUM ========== */
 router.post('/', (req, res, next) => {
   const { title, thumb, genre, year, userId } = req.body;
   const newAlbum = { title, thumb, genre, year, userId };
@@ -72,8 +72,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-
-/* ========== DELETE/REMOVE A SINGLE ITEM ========== */
+/* ========== DELETE/REMOVE A SINGLE ALBUM ========== */
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.user.id;
@@ -85,7 +84,7 @@ router.delete('/:id', (req, res, next) => {
     return next(err);
   }
 
-  Collection.findOneAndDelete({ _id: id, userId })
+  Collection.findOneAndDelete({ _id: id})
     .then(() => {
       res.sendStatus(204);
     })
