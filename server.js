@@ -7,7 +7,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-const { PORT, DATABASE_URL, MONGODB_URI} = require('./config');
+const { PORT, MONGODB_URI} = require('./config');
 
 const collectionRouter = require('./routes/collection-router');
 const usersRouter   = require('./routes/user-router');
@@ -128,7 +128,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 if (require.main === module) {
-  runServer(DATABASE_URL).catch(err => console.error(err));
+  runServer(MONGODB_URI).catch(err => console.error(err));
 }
 
 module.exports = { app, runServer, closeServer };
