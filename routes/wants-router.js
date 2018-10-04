@@ -4,7 +4,7 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
-const Collection = require('../models/collection-model');
+const Wants = require('../models/wants-model');
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
   let filter = { userId };
 
-  Collection.find(filter)
+  Wants.find(filter)
     .then(results => {
       res.json(results);
     })
@@ -37,7 +37,7 @@ router.get('/:id', (req, res, next) => {
     return next(err);
   }
 
-  Collection.findOne( { _id: id, userId } )
+  Wants.findOne( { _id: id, userId } )
     .then(result => {
       if (result) {
         res.json(result);
@@ -63,7 +63,7 @@ router.post('/', (req, res, next) => {
     return next(err);
   }
 
-  Collection.create(newAlbum)
+  Wants.create(newAlbum)
     .then(result => {
       res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
     })
@@ -84,7 +84,7 @@ router.delete('/:id', (req, res, next) => {
     return next(err);
   }
 
-  Collection.findOneAndDelete({ _id: id})
+  Wants.findOneAndDelete({ _id: id})
     .then(() => {
       res.sendStatus(204);
     })
