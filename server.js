@@ -10,7 +10,7 @@ const passport = require('passport');
 const { PORT, MONGODB_URI} = require('./config');
 
 const collectionRouter = require('./routes/collection-router');
-const wantsRouter = require('./routes/wants-router');
+const wishlistRouter = require('./routes/wishlist-router');
 const usersRouter   = require('./routes/user-router');
 const authRouter  = require('./routes/auth-router');
 const { localStrategy, jwtStrategy } = require('./auth/strategies');
@@ -42,7 +42,7 @@ passport.use(jwtStrategy);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 app.use('/api/collection/', collectionRouter);
-app.use('./api/wants/', wantsRouter);
+app.use('/api/wishlist/', wishlistRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 

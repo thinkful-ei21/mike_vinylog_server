@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 
-const wantsSchema = new mongoose.Schema({
+const wishlistSchema = new mongoose.Schema({
   title: { type: String, required: true },
   thumb: String,
   genre: String,
@@ -10,7 +10,7 @@ const wantsSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 })
 
-wantsSchema.set('toObject', {
+wishlistSchema.set('toObject', {
   virtuals: true,
   versionKey: false,
   transform: (doc, ret) => {
@@ -18,4 +18,4 @@ wantsSchema.set('toObject', {
   }
 })
 
-module.exports = mongoose.model('Wants', wantsSchema)
+module.exports = mongoose.model('Wants', wishlistSchema)
