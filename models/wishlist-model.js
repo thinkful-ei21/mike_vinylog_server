@@ -18,4 +18,4 @@ wishlistSchema.set('toObject', {
   }
 })
 
-module.exports = mongoose.model('Wants', wishlistSchema)
+module.exports = mongoose.model('Wishlist', wishlistSchema)
