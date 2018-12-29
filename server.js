@@ -48,7 +48,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // Initial server test
 app.get('/', (req, res) => {
-  console.log(res.json({message:'Hello Express!'}));
+  console.log(res.json({message:'Hello Vinylog!'}));
 });
 
 // A protected endpoint which needs a valid JWT to access it
